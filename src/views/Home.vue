@@ -1,50 +1,67 @@
 <template>
   <div class="home">
-    <h3>我是{{ name }},今年{{ age }}</h3>
-    <button @click="plusAge">+</button>
-    <tableCom></tableCom>
+    <tableCom :datas="data" :operation="operation"></tableCom>
+    <pagination></pagination>
   </div>
 </template>
 <script lang="ts" setup>
-    import {  onMounted, ref } from "vue";
-    import tableCom from '../components/TableCom.vue';
-    import {user,square,triangle} from '../utils/example'
-    const mounted=()=> {
-      // labelFn
-    }
-    interface labelValue {
-      name:string
-    }
-    const labelValue1: labelValue = {
-      name:'我是接口'
-    }
-    const labelValue2:labelValue = {
-      name:'我是接口2'
-    }
-    const name = ref("小帅");
-    const age = ref(18);
-    function plusAge() {
-        age.value++;
-        console.log(123213)
-        labelFn('sadasd')
-        ces(labelValue1)
-        ces(labelValue2)
-    }
-    
-    function labelFn(label:string) {
-      console.log(12323123,label);
-      
-    }
-    function ces(labelValue:labelValue):string {
-      console.log(labelValue);
-      return labelValue.name
-      
-    }
-    onMounted(()=>{
-      console.log(user);
-      console.log(square.calcPerimeter());
-      console.log(triangle.calcPerimeter());
-      
-    })
+import { reactive } from 'vue';
 
+// 计算数组中最大数值
+
+let array = [12,23,7,6,5,100,111]
+function maxVal(arr:Array<number>) {
+  return Math.max.apply(Math,arr)
+}
+maxVal(array)
+const data = reactive({
+  tableTitle: [
+    { prop: 'userName', label: '用户名称' },
+    { prop: 'phone', label: '联系电话' },
+    { prop: 'sex', label: '性别' },
+    { prop: 'address', label: '地址' },
+    { prop: 'status', label: '状态' },
+
+  ],
+  tableData: [
+    {
+      userName: "Tom",
+      phone: '17756767654',
+      sex: 1,
+      address: "No. 189, Grove St, Los Angeles",
+      status: 1
+    },
+  ]
+
+
+})
+const operation = reactive(
+  [
+    {
+      clickType:1,
+      clickName:'detail',
+      isDetail: true,
+      name:'详情',
+      type:'primary',
+      size: 'small',
+    },
+    {
+      clickType:2,
+      clickName:'edit',
+      isEdit: true,
+      name:'编辑',
+      type:'info',
+      size: 'small',
+    },
+    {
+      clickType:3,
+      clickName:'del',
+      isDel: true,
+      name:'删除',
+      type:'danger',
+      size: 'small',
+    },
+  ]
+)
 </script>
+、

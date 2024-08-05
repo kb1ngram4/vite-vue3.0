@@ -4,6 +4,38 @@ interface User {
     name:string,
     age:number
 }
+
+/**
+ * 组合类型 通过组合简单类型来创建复杂类型  联合 和 泛型
+ * 联合 可以声明类型可以是许多类型中的一种
+ */
+type MyBool = true | false
+// 联合类型的一个流行用法是描述 string 或者 number 的字面量的合法值。
+type WindowStates = 'open'| 'closed' | 'minimized'
+type LockStates = 'locked'|'unlocked'
+type num = 1|2|3|4
+
+let window:string|number = 'open'
+console.log(window);
+
+
+// 有一个函数处理string或者array string[]:字符串数组
+function getLength(obj:string |string[]) {
+    return obj.length
+}
+/**
+ * 泛型：泛型为类型提供变量，例如数组，没有泛型的数组可以包含任何内容。带有泛型的数组可以描述数组包含的值   
+ * 
+ */
+type StringArray = Array<string>
+let stringArr:StringArray = ['1','2']
+
+interface BackPack<Type>{
+    add:(obj:Type)=>void;
+    get:()=>Type
+}
+declare const backpack:BackPack<string>
+
 class UserAccount {
     id:number;
     name:string;
@@ -38,5 +70,5 @@ class Shape {
   const triangle = new Shape('tri',3,3)
 
 export {
-    user,square,triangle
+    user,square,triangle,window,getLength
 }
