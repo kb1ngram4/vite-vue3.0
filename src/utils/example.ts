@@ -5,6 +5,18 @@ interface User {
     age:number
 }
 
+// 接口继承
+interface User1 extends User {
+    sex:string
+}
+
+const x:User1 = {
+ id:1,
+ name:'x',
+ age:12,
+ sex:'男'
+}
+
 /**
  * 组合类型 通过组合简单类型来创建复杂类型  联合 和 泛型
  * 联合 可以声明类型可以是许多类型中的一种
@@ -20,7 +32,7 @@ console.log(window);
 
 
 // 有一个函数处理string或者array string[]:字符串数组
-function getLength(obj:string |string[]) {
+function getLength(obj:string |string[]):number {
     return obj.length
 }
 /**
@@ -29,6 +41,12 @@ function getLength(obj:string |string[]) {
  */
 type StringArray = Array<string>
 let stringArr:StringArray = ['1','2']
+
+let list:Array<object> = [
+    {name:'string'},
+    {name:'ssss'}
+]
+
 
 interface BackPack<Type>{
     add:(obj:Type)=>void;
@@ -66,8 +84,8 @@ class Shape {
     }
   
   }
-  const square = new Shape('square',4,5)
-  const triangle = new Shape('tri',3,3)
+const square = new Shape('square',4,5)
+const triangle = new Shape('tri',3,3)
 
 export {
     user,square,triangle,window,getLength

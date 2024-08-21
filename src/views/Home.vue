@@ -1,11 +1,15 @@
 <template>
-  <div class="home">
+  <div class="home" @click="routeC">
     <tableCom :datas="data" :operation="operation"></tableCom>
     <pagination></pagination>
+    <!-- <Cube /> -->
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive } from 'vue';
+// import Cube from '@/components/cube.vue';
+import router from '@/router';
+import { reactive,ref } from 'vue';
+const demo = ref('demo')
 
 // 计算数组中最大数值
 
@@ -14,6 +18,10 @@ function maxVal(arr:Array<number>) {
   return Math.max.apply(Math,arr)
 }
 maxVal(array)
+
+const routeC=()=>{
+  router.push('/tableCar')
+}
 const data = reactive({
   tableTitle: [
     { prop: 'userName', label: '用户名称' },
@@ -64,4 +72,5 @@ const operation = reactive(
   ]
 )
 </script>
-、
+<style scoped>
+</style>

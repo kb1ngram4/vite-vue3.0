@@ -1,14 +1,12 @@
-import { createRouter,createMemoryHistory,createWebHashHistory,RouteRecordRaw } from "vue-router";
 
-const routes: Array<RouteRecordRaw> = [
-    {
-        path:'/',
-        name:'Home',
-        component: ()=>import('@/views/Home.vue')
-    },
-]
+import { createRouter,createMemoryHistory,createWebHistory } from "vue-router";
+import routes from "./routes";
+/**
+ *createMemoryHistory//不会有历史记录
+ */
+
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes
 })
 export default router
