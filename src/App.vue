@@ -28,17 +28,7 @@ import { getUserInfoApi } from './api/userApi';
 //     })
 //     console.log('data',data);
 // }
-const getUser = async () => {
 
-  let obj = {
-    name: '张三',
-    age: '19',
-    sex: '1'
-  }
-  let data = await getUserInfoApi(obj)
-  console.log('data',data);
-  
-}
 const getJson = async()=>{
   let jsonData = {
     name: '张三',

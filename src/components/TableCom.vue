@@ -9,9 +9,9 @@
   </el-table>
 </template>
 <script setup lang='ts'>
-import { defineProps } from 'vue'
+import { defineProps,watch } from 'vue'
 
-const props = defineProps(['datas','operation'])
+const props = defineProps(['tableTitle','tableData','operation'])
 
 // 描述tableTitle内部数据  定义类型
 interface Title {
@@ -20,9 +20,11 @@ interface Title {
 }
 interface User {
   userName: string
-  phone:string
+  age:number
   sex:number
+  phone:string
   address: string
+  role:number
   status:number
 }
 interface Oper{
@@ -33,8 +35,14 @@ interface Oper{
   type:string,
   size: string ,
 }
-const tableTitle:Title [] = props.datas.tableTitle
-const tableData:User[] = props.datas.tableData
+const tableTitle:Title [] = props.tableTitle
+let tableData:User[] = props.tableData
+// console.log(props.tableData);
+// watch(()=>props.tableData,(newval,odlval)=>{
+//   console.log(newval,odlval);
+  
+//   tableData = newval.tableData
+// })
 
 const handleC=(item:Oper, val:User)=>{
   item.clickType==1?detail(val):item.clickType==2?edit(val):del(val)
