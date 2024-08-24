@@ -44,7 +44,7 @@ const edit=(val:User)=>{}
 const del = (val:User)=>{}
 </script>
 <style scoped>
-button:focus{
+/* button:focus{
   outline: none;
-}
+} */
 </style>

@@ -54,6 +54,16 @@ const routes: Array<RouteRecordRaw> = [
             show: true,
             icon: 'location'
         },
+    },
+    {
+        path:'/uploadFile',
+        name:'uploadFile',
+        component:()=>import('@/views/uploadFile.vue'),
+        meta:{
+            title:'上传文件',
+            show:true,
+            icon:'location'
+        }
     }
 ]
 export default routes

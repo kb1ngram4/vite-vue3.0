@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Cube: typeof import('./src/components/cube.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElItemItem: typeof import('element-plus/es')['ElItemItem']
@@ -19,11 +20,13 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Menu: typeof import('./src/components/menu.vue')['default']
     Pagination: typeof import('./src/components/Pagination.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TableCom: typeof import('./src/components/TableCom.vue')['default']
+    Upload: typeof import('./src/components/upload.vue')['default']
   }
 }

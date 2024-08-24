@@ -6,7 +6,8 @@ const axiosApi = axios.create({
     // 超时设置
     timeout: 15000,
     // urlencode
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    headers:{'Content-Type':'application/json'}
     
 })
 let loading: any

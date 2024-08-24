@@ -9,3 +9,15 @@
    vue2可以访问到setup中的属性、方法，反之不行
    setup只能是同步的不能是异步的
 ```
+## 遇到的问题及解决方式
+### 路由组件，ts识别不了vue模块问题
+```
+   在src目录下创建一个vite-env.d.ts文件
+   <!-- 所有以 .vue结尾的文件都是vue组件，可以通过import 语句导入 -->
+    declare module '*.vue' {
+      import{ Component } from 'vue';
+      const conponent:Component;
+      export default component;
+    }
+
+```

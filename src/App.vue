@@ -4,37 +4,58 @@
       class="el-menu-vertical-demo" mode="horizontal" unique-opened>
       <Menu :menuList="routes"></Menu>
     </el-menu> -->
-    <h1 class="user" @click="getUser" >获取用户信息</h1>
-    <router-view ></router-view>
+    <h1 class="user" @click="getUser">获取用户信息</h1>
+    <el-button @click="getJson"  type="primary" >发送json</el-button>
+    <el-divider border-style="dashed" />
+    <router-link to="/uploadFile">touploadFile</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
 import routes from '@/router/routes';
 import axiosApi from './utils/api';
-const  getUser = ()=>{
- axiosApi({
-    url:'/api/userInfo',
-    method:'post',
-    data:{
-      name:'张三',
-      age:'18',
-      sex:'1'
-    }
-  }).then(res =>{
-    console.log(res);
-    
-  })
-  
-  
+import { getUserInfoApi } from './api/userApi';
+//  const getUser = async ()=> {
+//   let data = await axiosApi({
+//       url:'/api/userInfo',
+//       method:'post',
+//       data:{
+//         name:'张三',
+//         age:'18',
+//         sex:'1'
+//       }
+//     })
+//     console.log('data',data);
+// }
+const getUser = async () => {
 
+  let obj = {
+    name: '张三',
+    age: '19',
+    sex: '1'
+  }
+  let data = await getUserInfoApi(obj)
+  console.log('data',data);
+  
+}
+const getJson = async()=>{
+  let jsonData = {
+    name: '张三',
+    age: '18',
+    sex: '1'
+  }
+  let data = await axiosApi.post('/api/userJson',jsonData)
+  console.log(data);
+  
 }
 </script>
 
 <style scoped>
-.user{
+.user {
   cursor: pointer;
 }
+
 .logo {
   height: 6em;
   padding: 1.5em;
