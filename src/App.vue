@@ -9,39 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import routes from '@/router/routes';
-import axiosApi from './utils/api';
-import { getUserInfoApi } from './api/userApi';
-//  const getUser = async ()=> {
-//   let data = await axiosApi({
-//       url:'/api/userInfo',
-//       method:'post',
-//       data:{
-//         name:'张三',
-//         age:'18',
-//         sex:'1'
-//       }
-//     })
-//     console.log('data',data);
-// }
-
-const getJson = async()=>{
-  let jsonData = {
-    name: '张三',
-    age: '18',
-    sex: '1'
-  }
-  let data = await axiosApi.post('/api/userJson',jsonData)
-  console.log(data);
-  
-}
 </script>
 
 <style scoped>
-.user {
-  cursor: pointer;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
