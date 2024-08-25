@@ -4,10 +4,6 @@
       class="el-menu-vertical-demo" mode="horizontal" unique-opened>
       <Menu :menuList="routes"></Menu>
     </el-menu> -->
-    <h1 class="user" @click="getUser">获取用户信息</h1>
-    <el-button @click="getJson"  type="primary" >发送json</el-button>
-    <el-divider border-style="dashed" />
-    <router-link to="/uploadFile">touploadFile</router-link>
     <router-view></router-view>
   </div>
 </template>

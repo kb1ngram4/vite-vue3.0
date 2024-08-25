@@ -1,5 +1,30 @@
 <template>
-  <div class="home" @click="routeC">
+  <div class="home">
+    <el-form inline>
+      <el-row >
+        <el-col :span="6">
+          <el-form-item label="用户名:">
+            <el-input v-model="form.username"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="年龄:">
+            <el-input v-model="form.age"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="状态:">
+            <el-input v-model="form.status"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item>
+            <el-button type="primary" @click="search">查询</el-button>
+            <el-button type="warning" @click="" reset>重置</el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
     <tableCom v-if="dataReady" :tableData="tableData" :tableTitle="tableTitle" :operation="operation"></tableCom>
     <pagination></pagination>
     <!-- <Cube /> -->
@@ -19,7 +44,12 @@ let array = [12, 23, 7, 6, 5, 100, 111]
 //   return Math.max.apply(Math, arr)
 // }
 // maxVal(array)
-const tableTitle= reactive(
+let form = ref({
+  username: '',
+  age: '',
+  status: ''
+})
+const tableTitle = reactive(
   [
     { prop: 'username', label: '用户名称' },
     { prop: 'age', label: '年龄' },
@@ -33,32 +63,28 @@ const tableTitle= reactive(
 
 
 )
-let tableData:[] = []
-onBeforeMount(async()=>{
+let tableData: [] = []
+onBeforeMount(async () => {
   getUser()
 })
 
-let dataReady:Ref<boolean> = ref(false)
+let dataReady: Ref<boolean> = ref(false)
 const getUser = async () => {
-
-let obj = {
-  name: '张三',
-  age: '19',
-  sex: '1'
+  dataReady.value = false
+  let body = await getUserInfoApi(form.value)
+  console.log('data', body);
+  tableData = body.data
+  dataReady.value = true
 }
-let body = await getUserInfoApi(obj)
-console.log('data',body);
- tableData = body.data
- dataReady.value = true
-console.log(tableData);
+const search = () => {
+  console.log(form);
 
-
+  getUser()
 }
 
-const routeC = () => {
-  router.push('/tableCar')
-}
+const reset = () => {
 
+}
 const operation = reactive(
   [
     {
