@@ -1,5 +1,7 @@
 # Vue 3 + TypeScript + Vite
 
+### master 模板  dev:开发分支
+
 ## setup函数的特性和作用
 ```
    setup函数是处于beforeCreate和Created两个钩子函数之间，即 setup的this指向undefined
