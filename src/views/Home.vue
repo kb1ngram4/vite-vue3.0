@@ -100,7 +100,8 @@ onBeforeMount(async () => {
 })
 interface itemObj  {
   sex:any,
-  role:any
+  role:any,
+  status:any
 }
 let dataReady: Ref<boolean> = ref(false)
 const getUser = async () => {
@@ -109,6 +110,7 @@ const getUser = async () => {
   tableData = body.data
   tableData.map((item:itemObj,index)=>{
     item.sex==1?item.sex='男':item.sex='女'
+    item.status==1?item.status='在职':item.status='调休'
     item.role == 0? item.role='超管':item.role==1? item.role = '管理员':item.role='员工'
   })
   dataReady.value = true
@@ -153,10 +155,13 @@ const operation = reactive(
 )
 
 const handleAdd = ()=>{
-  showDialog.value = true
   title.value = '新增'
+  showDialog.value = true
+  
 }
 const close = async (val:any,item:object)=>{
+  console.log(item);
+  
 
   if(item){
     let data = await addUserApi(item)
@@ -180,9 +185,7 @@ const close = async (val:any,item:object)=>{
 
 const toDetail = async (val:number,tName:string)=>{
   let res = await getUserInfoApi(val)
-   detailForm = res.data
-  detailForm.sex==1?detailForm.sex='男':detailForm.sex='女'
-  detailForm.role == 0? detailForm.role='超管':detailForm.role==1? detailForm.role = '管理员':detailForm.role='员工'
+  detailForm = res.data
   title.value = tName
   showDialog.value = true
   

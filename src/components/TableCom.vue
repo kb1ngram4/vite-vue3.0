@@ -47,13 +47,15 @@ let tableData:User[] = props.tableData
 const handleC=(item:Oper, val:User)=>{
   item.clickType==1?detail(val):item.clickType==2?edit(val):del(val)
 }
-const emits = defineEmits(['toDetail','delete'])
+const emits = defineEmits(['toDetail','delete','openEdit'])
 
 const detail=(val:User)=>{
   emits('toDetail',val.id,'详情')
 
 }
-const edit=(val:User)=>{}
+const edit=(val:User)=>{
+  emits('toDetail',val.id,'编辑')
+}
 const del = (val:User)=>{
   emits('delete',val.id)
 }
