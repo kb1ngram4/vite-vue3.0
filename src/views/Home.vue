@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h1 class="shark-txt">asdlsadlsadjaldjaldjaldjsaldsajldjaldaj</h1>
     <el-form inline>
       <el-row >
         <el-col :span="6">
@@ -47,15 +48,16 @@
 <script lang="ts" setup>
 import AddUserTable from '@/components/userTable/AddUserTable.vue';
 import { addUserApi, deleteUserApi, getUserInfoApi, getUserListApi } from '@/api/userApi';
-import { onBeforeMount, reactive, Ref, ref } from 'vue';
+import { defineAsyncComponent, onBeforeMount, reactive, Ref, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
+// const tableCom = defineAsyncComponent(()=>import('@/components/TableCom.vue'))
 
 let searchForm = reactive({
   username: '',
   age: '',
   role: '',
-  page:'',
-  pageSize:''
+  page:1,
+  pageSize:10
 })
 interface DetailForm {
   username:string,
@@ -92,8 +94,6 @@ const tableTitle = reactive(
 )
 let tableData: [] = []
 onBeforeMount(async () => {
-  console.log('2222222');
-  
   showDialog.value = false
   getUser()
   
@@ -203,4 +203,23 @@ const deleteUser = async(val:number)=>{
   display: flex;
   margin-bottom: 10px;
 }
+.shark-txt {  
+  background: hotpink linear-gradient(to left, transparent, #fff, transparent) no-repeat 0 0;
+    background-size: 20% 100%;
+    background-position: 0 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shark-txt 3s infinite;
+}
+@keyframes shark-txt {
+    from {
+        background-position:-100%;
+    }
+    to {
+        background-position:200%;
+    }
+}
+
+
 </style>

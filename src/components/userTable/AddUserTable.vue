@@ -1,6 +1,6 @@
 <template>
     <div class="add_table">
-        <el-dialog v-model="isDialog.value" :title="title" width="50%"  @close="resetForm(ruleFormRef)" :rules="rules" align="left" >
+        <el-dialog v-model="isDialog.value" :title="title" width="50%"  @close="resetForm(ruleFormRef)" :rules="rules" align-top >
             <el-form label-width="90px" :model="form" v-model="form" label-position="right" ref="ruleFormRef" >
                 <el-row :gutter="10">
                     <el-col :span="12" >
@@ -11,6 +11,7 @@
                     <el-col :span="12" >
                         <el-form-item label="年龄：" prop="age" >
                             <el-input :disabled="isDisable" v-model="form.age" ></el-input>
+                             <!-- <el-input class="clear-number-input" v-model="form.age" type="number"></el-input> -->
                         </el-form-item>
                     </el-col>
                     <el-col :span="12" >
@@ -35,7 +36,7 @@
                     <el-col :span="12" >
                         <el-form-item label="角色：" prop="role" >
                             <el-select :disabled="isDisable" placeholder="请选择角色" v-model="form.role" >
-                                <el-option v-for="item in roleList" :value="item.value" :label="item.label" ></el-option>
+                                <el-option v-for="item,index in roleList" :key="index" :value="item.value" :label="item.label" ></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
@@ -54,7 +55,7 @@
             <template #footer >
                 <div class="btn" v-show="title!=='详情'">
                     <el-button @click="resetForm(ruleFormRef)" >取消</el-button>    
-                    <el-button @click="submit" >提交</el-button>    
+                    <el-button type="primary" @click="submit" >提交</el-button>    
                 </div>
             </template>
         </el-dialog>
@@ -133,4 +134,8 @@ watch(
     justify-content: center;
     align-items: center
 }
+/* .clear-number-input ::v-deep input[type="number"]::-webkit-outer-spin-button,
+.clear-number-input ::v-deep input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+} */
 </style>

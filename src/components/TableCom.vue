@@ -1,9 +1,9 @@
 <template>
   <el-table :data="tableData" border style="width: 100%;"  >
-    <el-table-column v-for="item in  tableTitle" :prop="item.prop" :label="item.label" :align="'center'"  ></el-table-column>\
+    <el-table-column v-for="item,index in  tableTitle" :key="index" :prop="item.prop" :label="item.label" :align="'center'"  ></el-table-column>\
     <el-table-column align="center" label="操作" v-if="props.operation.length" width="210" >
       <template #default="scope">
-          <el-button v-for="_item in props.operation" :type="_item.type" :size="_item.size" @click="handleC(_item,scope.row)" >{{_item.name}}</el-button>
+          <el-button v-for="_item,_index in props.operation" :key="_index" :type="_item.type" :size="_item.size" @click="handleC(_item,scope.row)" >{{_item.name}}</el-button>
       </template>   
     </el-table-column>
     <template #empty>
