@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="shark-txt">asdlsadlsadjaldjaldjaldjsaldsajldjaldaj</h1>
+    <!-- <h1 class="shark-txt">asdlsadlsadjaldjaldjaldjsaldsajldjaldaj</h1> -->
     <el-form inline>
       <el-row >
         <el-col :span="6">
