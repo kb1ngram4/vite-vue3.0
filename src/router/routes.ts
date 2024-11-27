@@ -35,20 +35,20 @@ const routes: Array<RouteRecordRaw> = [
             },
             {
                 path: '/carmanage/carMonitor',
-                name: '车辆监控', 
+                name: '车辆监控',
                 meta: {
                     title: '车辆监控',
                     show: true,
                     icon: 'location'
-                }, 
+                },
                 component: () => import('@/views/tableCar.vue')
             },
         ]
     },
     {
-        path: '/tableCar',
-        name: 'TableCar',
-        component: TableCar,
+        path: '/cascader',
+        name: 'Cascader',
+        component: () => import('@/views/cascader.vue'),
         meta: {
             title: '表格',
             show: true,
@@ -56,13 +56,23 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     {
-        path:'/uploadFile',
-        name:'uploadFile',
-        component:()=>import('@/views/uploadFile.vue'),
-        meta:{
-            title:'上传文件',
-            show:true,
-            icon:'location'
+        path: '/tree',
+        name: 'Tree',
+        component: () => import('@/views/tree.vue'),
+        meta: {
+            title: '表格',
+            show: true,
+            icon: 'location'
+        },
+    },
+    {
+        path: '/uploadFile',
+        name: 'uploadFile',
+        component: () => import('@/views/uploadFile.vue'),
+        meta: {
+            title: '上传文件',
+            show: true,
+            icon: 'location'
         }
     }
 ]
