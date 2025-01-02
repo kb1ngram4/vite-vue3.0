@@ -16,7 +16,7 @@
         <el-col :span="6">
           <el-form-item label="角色:">
             <el-select v-model="searchForm.role" style="width: 240px" placeholder="请选择角色">
-              <el-option v-for="item in roleList" :label="item.label" :value="item.value"></el-option>
+              <el-option v-for="item in roleList" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
         </el-col>
@@ -45,10 +45,8 @@
 <script lang="ts" setup>
 import AddUserTable from '@/components/userTable/AddUserTable.vue';
 import { addUserApi, deleteUserApi, getUserInfoApi, getUserListApi } from '@/api/userApi';
-import { defineAsyncComponent, onBeforeMount, reactive, Ref, ref } from 'vue';
+import { onBeforeMount, reactive, Ref, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
-// const tableCom = defineAsyncComponent(()=>import('@/components/TableCom.vue'))
-
 let searchForm = reactive({
   username: '',
   age: '',
