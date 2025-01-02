@@ -5,8 +5,8 @@
     <div class="addIcon">
       <el-button :icon="Plus" type="primary" @click="handleAdd">新增</el-button>
     </div>
-    <tableCom v-if="dataReady" :tableData="tableData" :tableTitle="tableTitle" :operation="operation"
-      @toDetail="toDetail" @delete="deleteUser"></tableCom>
+    <tableCom :tableData="tableData" :tableTitle="tableTitle" :operation="operation" @toDetail="toDetail"
+      @delete="deleteUser"></tableCom>
     <pagination></pagination>
     <el-button @click="$router.push('/cascader')">级联懒加载</el-button>
     <el-button @click="$router.push('/tree')" to="/tree">tree懒加载</el-button>
@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import AddUserTable from '@/components/userTable/AddUserTable.vue';
+// import AddUserTable from '@/components/userTable/AddUserTable.vue';
 import { addUserApi, deleteUserApi, getUserInfoApi, getUserListApi } from '@/api/userApi';
 import { onBeforeMount, reactive, Ref, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
@@ -82,7 +82,6 @@ interface itemObj {
 }
 let dataReady: Ref<boolean> = ref(false)
 const getUser = async () => {
-  dataReady.value = false
   let body = await getUserListApi(searchForm)
   tableData = body.data
   tableData.map((item: itemObj, index) => {
@@ -90,7 +89,6 @@ const getUser = async () => {
     item.status == 1 ? item.status = '在职' : item.status = '调休'
     item.role == 0 ? item.role = '超管' : item.role == 1 ? item.role = '管理员' : item.role = '员工'
   })
-  dataReady.value = true
 }
 const search = (form: any) => {
   Object.assign(searchForm, form)
