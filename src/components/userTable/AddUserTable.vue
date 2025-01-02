@@ -69,7 +69,7 @@ export default { name: 'AddUserTable' }
 
 <script lang="ts" setup>
 import { FormInstance, FormRules } from 'element-plus';
-import { computed, onMounted, reactive, Ref, ref, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 const props = defineProps(['isShow', 'title', 'detailForm'])
 const emits = defineEmits(['closeAdd'])
 const ruleFormRef = ref<FormInstance>()
