@@ -1,7 +1,8 @@
 <template>
   <div class="home">
+    <ComSearchForm :searchConfig="searchConfig" @search="search" @reset="reset"></ComSearchForm>
     <!-- <h1 class="shark-txt">asdlsadlsadjaldjaldjaldjsaldsajldjaldaj</h1> -->
-    <el-form inline>
+    <!-- <el-form inline>
       <el-row>
         <el-col :span="6">
           <el-form-item label="用户名:">
@@ -27,7 +28,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-    </el-form>
+    </el-form> -->
     <div class="addIcon">
       <el-button :icon="Plus" type="primary" @click="handleAdd">新增</el-button>
     </div>
@@ -47,6 +48,13 @@ import AddUserTable from '@/components/userTable/AddUserTable.vue';
 import { addUserApi, deleteUserApi, getUserInfoApi, getUserListApi } from '@/api/userApi';
 import { onBeforeMount, reactive, Ref, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
+
+const roleList = ref([
+  { value: 0, label: '超管' },
+  { value: 1, label: '管理员' },
+  { value: 2, label: '员工' }
+])
+
 let searchForm = reactive({
   username: '',
   age: '',
@@ -54,6 +62,13 @@ let searchForm = reactive({
   page: 1,
   pageSize: 10
 })
+
+const searchConfig = reactive([
+  { label: '用户名', field: 'username', type: 'input', placeholder: '请输入用户名' },
+  { label: '年龄', field: 'age', type: 'input', placeholder: '请输入年龄' },
+  { label: '角色', field: 'role', type: 'select', placeholder: '请选择角色', options: roleList.value }
+])
+
 interface DetailForm {
   username: string,
   age: number,
@@ -65,12 +80,6 @@ interface DetailForm {
 }
 
 let detailForm: DetailForm
-const roleList = ref([
-  { value: 0, label: '超管' },
-  { value: 1, label: '管理员' },
-  { value: 2, label: '员工' }
-])
-
 let showDialog = reactive({ value: false })
 let title = ref('新增')
 const tableTitle = reactive(
@@ -110,7 +119,9 @@ const getUser = async () => {
   })
   dataReady.value = true
 }
-const search = () => {
+const search = (form: any) => {
+  console.log(form);
+  Object.assign(searchForm, form)
   getUser()
 }
 
