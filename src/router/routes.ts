@@ -74,6 +74,16 @@ const routes: Array<RouteRecordRaw> = [
             show: true,
             icon: 'location'
         }
+    },
+    {
+        path: '/drag',
+        name: 'Drag',
+        component: () => import('@/views/DragDemo.vue'),
+        meta: {
+            title: '拖拽演示',
+            show: true,
+            icon: 'Rank'
+        }
     }
 ]
 export default routes
