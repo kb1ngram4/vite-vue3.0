@@ -3,6 +3,16 @@
     <el-cascader v-model="selectedOptions" :options="options" :props="cascaderProps" placeholder="请选择" clearable
       :default-checked-keys="treeIds" @change="handleChange" @expand-change="expandChange" />
     <el-button @click="handleSelectAll">全选</el-button>
+    <input type="range">
+    <a href="tel:+1234567890"> 联系我们 </a>
+    <a href="mailto:1318937727@qq.com"> 联系我们 </a>
+    <details>
+      <summary>点击展开</summary>
+      <p>此内容可以展开或折叠。</p>
+    </details>
+    <p>
+      H<sub>2</sub>O
+    </p>
   </div>
 </template>
 

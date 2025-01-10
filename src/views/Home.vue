@@ -8,10 +8,6 @@
     <tableCom :tableData="tableData" :tableTitle="tableTitle" :operation="operation" @toDetail="toDetail"
       @delete="deleteUser"></tableCom>
     <pagination></pagination>
-    <el-button @click="$router.push('/cascader')">级联懒加载</el-button>
-    <el-button @click="$router.push('/tree')" to="/tree">tree懒加载</el-button>
-    <!-- <Cube /> -->
-    <!-- <add :isShow="isshowDialog" ></add> -->
     <add-user-table :isShow="showDialog.value" @closeAdd="close" :title="title"
       :detailForm="detailForm"></add-user-table>
   </div>

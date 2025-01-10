@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
                     show: true,
                     icon: 'location'
                 },
-                component: () => import('@/views/tableCar.vue'),
+                component: () => import('@/views/cascader.vue'),
             },
             {
                 path: '/carmanage/carMonitor',
@@ -41,29 +41,9 @@ const routes: Array<RouteRecordRaw> = [
                     show: true,
                     icon: 'location'
                 },
-                component: () => import('@/views/tableCar.vue')
+                component: () => import('@/views/tree.vue')
             },
         ]
-    },
-    {
-        path: '/cascader',
-        name: 'Cascader',
-        component: () => import('@/views/cascader.vue'),
-        meta: {
-            title: '表格',
-            show: true,
-            icon: 'location'
-        },
-    },
-    {
-        path: '/tree',
-        name: 'Tree',
-        component: () => import('@/views/tree.vue'),
-        meta: {
-            title: '表格',
-            show: true,
-            icon: 'location'
-        },
     },
     {
         path: '/uploadFile',
@@ -83,6 +63,16 @@ const routes: Array<RouteRecordRaw> = [
             title: '拖拽演示',
             show: true,
             icon: 'Rank'
+        }
+    },
+    {
+        path: '/worker',
+        name: 'Worker',
+        component: () => import('@/views/WorkerDemo.vue'),
+        meta: {
+            title: 'Worker Demo',
+            show: true,
+            icon: 'Promotion'
         }
     }
 ]
