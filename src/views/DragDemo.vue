@@ -18,18 +18,19 @@
     <div 
       class="target-container"
       @dragover.prevent
-      @drop="handleDrop"
-      @dragenter.prevent
+      @drop.prevent="handleDrop"
+      @dragenter.prevent="handleDragEnter"
       @dragleave="handleDragLeave"
       :class="{ 'drag-over': isDragOver }"
     >
       <template v-if="targetItems.length">
         <div 
-          v-for="item in targetItems" 
+          v-for="item,index in targetItems" 
           :key="item.id"
           class="target-item"
           draggable="true"
           @dragstart="handleDragStart($event, item, true)"
+          @dragover.prevent="handleDragOver(index)"
         >
           {{ item.name }}
           <el-icon class="delete-icon" @click="removeItem(item)">
@@ -42,6 +43,7 @@
       </div>
     </div>
   </div>
+  <DragSort />
 </template>
 
 <script setup lang="ts">
@@ -68,11 +70,12 @@ const targetItems = ref<DragItem[]>([])
 // 拖拽状态
 const isDragOver = ref(false)
 const currentDragItem = ref<DragItem | null>(null)
+// 是否从目标区域拖拽
 const isFromTarget = ref(false)
 
 // 开始拖拽
 const handleDragStart = (event: DragEvent, item: DragItem, fromTarget = false) => {
-  console.log('handleDragStart', event.dataTransfer, item, fromTarget);
+  console.log('handleDragStart', event.dataTransfer, '当前',item,'目标区域',targetItems, '状态',fromTarget);
   if (event.dataTransfer) {
     event.dataTransfer.effectAllowed = 'move'
     currentDragItem.value = item
@@ -84,6 +87,8 @@ const handleDragStart = (event: DragEvent, item: DragItem, fromTarget = false) =
 const handleDragEnd = () => {
   currentDragItem.value = null
   isFromTarget.value = false
+  // console.log('handleDragEnd', currentDragItem.value, isFromTarget.value);
+  
 }
 
 // 拖拽进入目标区域
@@ -115,13 +120,31 @@ const handleDrop = () => {
   } else {
     // 在目标区域内部排序
     const index = targetItems.value.findIndex(item => item.id === currentDragItem.value?.id)
-    if (index > -1) {
-      const [removed] = targetItems.value.splice(index, 1)
-      targetItems.value.push(removed)
-    }
+    console.log(index);
+    const dragitem = targetItems.value.splice(index, 1)[0]
+    console.log(dragitem);
+    targetItems.value.splice(dragingIndex.value,0,dragitem)
+    dragingIndex.value = index
+    
+    // if (index > -1) {
+    //   const [removed] = targetItems.value.splice(index, 1)
+    //   targetItems.value.push(removed)
+    // }
   }
   
   currentDragItem.value = null
+}
+// 目标拖拽排序
+const dragingIndex = ref(0)
+const handleDragOver = (index: number) => {
+  dragingIndex.value = index
+  // const dragItem = targetItems.value.splice(index,1)[0]
+  // console.log(targetItems.value);
+  
+  // targetItems.value.splice(index, 0, dragItem)
+  // console.log(targetItems.value);
+  
+  
 }
 
 // 从目标区域移除

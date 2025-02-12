@@ -10,6 +10,8 @@ declare module 'vue' {
     AddUserTable: typeof import('./src/components/userTable/AddUserTable.vue')['default']
     ComSearchForm: typeof import('./src/components/ComSearchForm.vue')['default']
     Cube: typeof import('./src/components/cube.vue')['default']
+    DragSort: typeof import('./src/components/DragSort.vue')['default']
+    DragTree: typeof import('./src/components/dragTree.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCascader: typeof import('element-plus/es')['ElCascader']
