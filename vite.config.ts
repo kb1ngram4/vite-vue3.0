@@ -37,6 +37,10 @@ export default (command, mode) => {
           // secure: false,
         },
         //可配置多个
+      '/api/userInfo': {
+        target: 'ws://localhost:3000',
+        ws: true,
+      },
 
       }
 

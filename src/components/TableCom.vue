@@ -44,6 +44,7 @@ interface Oper {
 }
 const tableTitle: Title[] = props.tableTitle
 let tableData: User[] = props.tableData
+// console.log(tableData);
 
 const handleC = (item: Oper, val: User) => {
   item.clickType == 1 ? detail(val) : item.clickType == 2 ? edit(val) : del(val)

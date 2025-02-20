@@ -42,5 +42,6 @@ declare module 'vue' {
     SubMenu: typeof import('./src/components/layout/SubMenu.vue')['default']
     TableCom: typeof import('./src/components/TableCom.vue')['default']
     Upload: typeof import('./src/components/upload.vue')['default']
+    WebSocket: typeof import('./src/components/WebSocket.vue')['default']
   }
 }

@@ -10,6 +10,8 @@
     <pagination></pagination>
     <add-user-table :isShow="showDialog.value" @closeAdd="close" :title="title"
       :detailForm="detailForm"></add-user-table>
+
+    <web-socket></web-socket>
   </div>
 </template>
 <script lang="ts" setup>
@@ -65,7 +67,7 @@ const tableTitle = reactive(
 
 
 )
-let tableData: [] = []
+let tableData = reactive([])
 onBeforeMount(async () => {
   showDialog.value = false
   getUser()
@@ -85,6 +87,8 @@ const getUser = async () => {
     item.status == 1 ? item.status = '在职' : item.status = '调休'
     item.role == 0 ? item.role = '超管' : item.role == 1 ? item.role = '管理员' : item.role = '员工'
   })
+  console.log(tableData);
+  
 }
 const search = (form: any) => {
   Object.assign(searchForm, form)
