@@ -26,7 +26,7 @@ export default (command, mode) => {
       }
     },
     server: {
-      port: 8080,
+      port: 8180,
       open: true, //服务启动自动打开浏览器
       proxy: {    //代理
         '/api': {

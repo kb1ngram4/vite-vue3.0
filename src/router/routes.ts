@@ -1,7 +1,7 @@
 import { defineAsyncComponent } from "vue";
 import { RouteRecordRaw } from "vue-router";
 
-const TableCar = defineAsyncComponent(() => import('@/views/tableCar.vue'))
+// const TableCar = defineAsyncComponent(() => import('@/views/tableCar.vue'))
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',

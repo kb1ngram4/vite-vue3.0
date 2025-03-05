@@ -2,6 +2,7 @@
   <Upload :url="'/api/file/upload'"></Upload>
 
   <h3 class="upbtn" @click="handleUpload">下载</h3>
+  <ComEditor />
 </template>
 <script lang="ts" setup>
 import axiosApi from '@/utils/api';

@@ -10,12 +10,13 @@
     <pagination></pagination>
     <add-user-table :isShow="showDialog.value" @closeAdd="close" :title="title"
       :detailForm="detailForm"></add-user-table>
-
-    <web-socket></web-socket>
+    <SocketIo />
+    <!-- <web-socket></web-socket> -->
   </div>
 </template>
 <script lang="ts" setup>
 // import AddUserTable from '@/components/userTable/AddUserTable.vue';
+import SocketIo from '@/components/socket.io.vue';
 import { addUserApi, deleteUserApi, getUserInfoApi, getUserListApi } from '@/api/userApi';
 import { onBeforeMount, reactive, Ref, ref } from 'vue';
 import { Plus } from '@element-plus/icons-vue'

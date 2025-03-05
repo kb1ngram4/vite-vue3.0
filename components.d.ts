@@ -8,10 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AddUserTable: typeof import('./src/components/userTable/AddUserTable.vue')['default']
+    ComEditor: typeof import('./src/components/ComEditor.vue')['default']
     ComSearchForm: typeof import('./src/components/ComSearchForm.vue')['default']
     Cube: typeof import('./src/components/cube.vue')['default']
     DragSort: typeof import('./src/components/DragSort.vue')['default']
     DragTree: typeof import('./src/components/dragTree.vue')['default']
+    Editor: typeof import('./src/components/editor.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCascader: typeof import('element-plus/es')['ElCascader']
@@ -39,6 +41,7 @@ declare module 'vue' {
     Pagination: typeof import('./src/components/Pagination.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    'Socket.io': typeof import('./src/components/socket.io.vue')['default']
     SubMenu: typeof import('./src/components/layout/SubMenu.vue')['default']
     TableCom: typeof import('./src/components/TableCom.vue')['default']
     Upload: typeof import('./src/components/upload.vue')['default']
